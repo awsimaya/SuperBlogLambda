@@ -1,0 +1,27 @@
+﻿@page
+@model NewPostModel
+@{
+    if (NewPostModel.Message == "Posted")
+    {
+        <h2 style="color:forestgreen">Posted Successfully ☺︎</h2>
+        NewPostModel.Message = string.Empty;
+    }
+    else if (NewPostModel.Message == "Error")
+    {
+        <h2 style="color:red">Oops...Something went wrong ε(´סּ︵סּ`)з</h2>
+    }
+    else
+    {
+        <form method="post">
+            <h2>New Post</h2>
+            <hr />
+            <h3>Title</h3>
+            <input type="text" name="postTitle" style="min-width:700px" />
+            <h3>Content</h3>
+            <textarea name="postContent" style="text-wrap:normal;min-width:1000px; min-height:500px"></textarea>
+            <br />
+            <input type="submit" name="btnSubmit" value="Submit" style="background-color:lightblue" />
+        </form>
+        <br /><br />
+    }
+}

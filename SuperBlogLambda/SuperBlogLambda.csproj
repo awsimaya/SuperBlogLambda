@@ -5,7 +5,14 @@
     <AWSProjectType>Lambda</AWSProjectType>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Controller\**" />
+    <Content Remove="Controller\**" />
+    <EmbeddedResource Remove="Controller\**" />
+    <None Remove="Controller\**" />
+  </ItemGroup>
+  <ItemGroup>
 	<PackageReference Include="Amazon.Lambda.AspNetCoreServer" Version="2.0.4" />
+	<PackageReference Include="AWSSDK.S3" Version="3.3.24" />
   <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.0" />
   </ItemGroup>
   <ItemGroup>
