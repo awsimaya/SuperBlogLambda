@@ -14,13 +14,14 @@
     "AspNetCoreFunction" : {
       "Type" : "AWS::Serverless::Function",
       "Properties": {
+	  	"FunctionName":"SuperBlogLambda",
         "Handler": "SuperBlogLambda::SuperBlogLambda.LambdaEntryPoint::FunctionHandlerAsync",
         "Runtime": "dotnetcore2.1",
         "CodeUri": "",
         "MemorySize": 512,
         "Timeout": 30,
-        "Role": null,
-        "Policies": [ "AWSLambdaFullAccess" ],
+        "Role": "arn:aws:iam::831210339789:role/lambda_exec_TranslateBatch",
+        "Policies": "",
         "Environment" : {
           "Variables" : {
           }
