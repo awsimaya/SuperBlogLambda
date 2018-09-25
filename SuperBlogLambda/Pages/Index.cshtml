@@ -6,12 +6,18 @@
 }
 
 @{
-    
-    foreach (var post in Model.Posts)
+    if (Model.Posts.Count == 0)
     {
+        <h3>Come on... Write something. Let your creative juice flow. The world is waiting for your magical words.</h3>
+    }
+    else
+    {
+        foreach (var post in Model.Posts)
+        {
         <h2 style="color:darkcyan"> @post.postTitle</h2>
         <label style="color:cadetblue">@post.postTime UTC</label>
         <p>@post.postContent</p>
         <hr />
+            }
+        }
     }
-}
