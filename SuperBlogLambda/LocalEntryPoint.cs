@@ -19,6 +19,12 @@ namespace SuperBlogLambda
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    config.SetBasePath(Directory.GetCurrentDirectory())
+                        .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)
+                        .AddEnvironmentVariables();
+                })
                 .UseStartup<Startup>()
                 .Build();
     }
