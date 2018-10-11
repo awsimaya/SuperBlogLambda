@@ -21,8 +21,7 @@
         "MemorySize": 512,
         "Timeout": 30,
         "Policies": [
-		  "AmazonS3FullAccess",
-		  "TranslateReadOnly"
+		  "AmazonS3FullAccess"
 		],
         "Environment" : {
           "Variables" : {
