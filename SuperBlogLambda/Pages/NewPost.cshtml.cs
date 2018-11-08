@@ -25,7 +25,6 @@ namespace SuperBlogLambda.Pages
                 ContentBody = postContent,
                 BucketName = ValueConstants.BUCKETNAME,
                 Key = $"EN/{postTitle.ToString().Replace(" ", "_")}.txt"
-
             });
 
             Message = result.HttpStatusCode == System.Net.HttpStatusCode.OK ? "Posted" : "Error";

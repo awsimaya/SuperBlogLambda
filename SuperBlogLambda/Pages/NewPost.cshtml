@@ -4,6 +4,7 @@
     if (NewPostModel.Message == "Posted")
     {
         <h2 style="color:forestgreen">Success!! Your new blog post is now living on the interwebs ☺︎</h2>
+        <br />
         NewPostModel.Message = string.Empty;
     }
     else if (NewPostModel.Message == "Error")
@@ -16,7 +17,7 @@
             <h2>New Post</h2>
             <hr />
             <h3>Title</h3>
-            <input type="text" name="postTitle" style="min-width:700px" />
+            <input type="text" name="postTitle" style="min-width:700px" pattern="[A-Za-z-0-9\s]+" title="Alpha numeric characters with spaces" />
             <h3>Content</h3>
             <textarea name="postContent" style="text-wrap:normal;min-width:1000px; min-height:500px"></textarea>
             <br />

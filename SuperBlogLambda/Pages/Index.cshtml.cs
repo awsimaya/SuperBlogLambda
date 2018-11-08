@@ -17,6 +17,8 @@ namespace SuperBlogLambda.Pages
         public async Task<IActionResult> OnGet(string lang)
         {
             lang = lang ?? "EN";
+            ViewData["Lang"] = lang;
+           
             try
             {
                 using (var s3Client = new AmazonS3Client(Amazon.RegionEndpoint.USEast1))
