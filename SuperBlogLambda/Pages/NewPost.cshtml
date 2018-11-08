@@ -1,6 +1,10 @@
 ﻿@page
 @model NewPostModel
 @{
+    ViewData["Title"] = "New Post";
+}
+
+@{
     if (NewPostModel.Message == "Posted")
     {
         <h2 style="color:forestgreen">Success!! Your new blog post is now living on the interwebs ☺︎</h2>
