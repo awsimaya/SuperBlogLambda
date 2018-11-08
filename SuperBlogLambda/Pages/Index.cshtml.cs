@@ -2,7 +2,7 @@ using Amazon.S3;
 using Amazon.S3.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using SuperBlogLambda.Constants;
+using Microsoft.Extensions.Configuration;
 using SuperBlogLambda.Models;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,14 @@ namespace SuperBlogLambda.Pages
 {
     public class IndexModel : PageModel
     {
+        private IConfiguration Configuration { get; }
         public List<PostModel> Posts = new List<PostModel>();
+
+        public IndexModel(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
         public async Task<IActionResult> OnGet(string lang)
         {
             lang = lang ?? "EN";
@@ -21,17 +28,17 @@ namespace SuperBlogLambda.Pages
            
             try
             {
-                using (var s3Client = new AmazonS3Client(Amazon.RegionEndpoint.USEast1))
+                using (var s3Client = new AmazonS3Client(Amazon.RegionEndpoint.GetBySystemName(Configuration["AWS_REGION"])))
                 {
                     var listObjectsAsyncResponse = await s3Client.ListObjectsAsync(new ListObjectsRequest()
                     {
-                        BucketName = ValueConstants.BUCKETNAME,
+                        BucketName = Configuration["BUCKETNAME"],
                         Prefix = lang.ToUpper()
                     });
 
                     GetObjectRequest request = new GetObjectRequest
                     {
-                        BucketName = ValueConstants.BUCKETNAME
+                        BucketName = Configuration["BUCKETNAME"]
                     };
 
                     GetObjectResponse response;

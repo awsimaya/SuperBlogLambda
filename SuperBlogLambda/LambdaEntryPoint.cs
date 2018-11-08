@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using System.IO;
 
 namespace SuperBlogLambda
@@ -24,7 +25,13 @@ namespace SuperBlogLambda
         protected override void Init(IWebHostBuilder builder)
         {
             builder
-                .UseStartup<Startup>();
+            .ConfigureAppConfiguration((hostingContext, config) =>
+            {
+                config.SetBasePath(Directory.GetCurrentDirectory())
+                    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)
+                    .AddEnvironmentVariables();
+            })
+            .UseStartup<Startup>();
         }
     }
 }

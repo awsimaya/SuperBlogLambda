@@ -20,8 +20,9 @@
         "CodeUri": "",
         "MemorySize": 512,
         "Timeout": 30,
-        "Role": "arn:aws:iam::831210339789:role/lambda_exec_TranslateBatch",
-        "Policies": "",
+        "Policies": [
+		  "AmazonS3FullAccess"
+		],
         "Environment" : {
           "Variables" : {
           }
